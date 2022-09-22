@@ -82,8 +82,14 @@ app.listen(puerto,()=>{
 });*/
 
 //Routers:
+
+//router programacion
 const routerProgramacion = express.Router();
 app.use('/api/cursos/programacion',routerProgramacion);
+
+//router matematica.
+const routerMatematicas = express.Router();
+app.use('/api/cursos/matematicas',routerMatematicas);
 
 routerProgramacion.get('/',(req, res)=>{
     res.send(JSON.stringify(infoCursos.programacion))
@@ -99,7 +105,7 @@ app.get('/api/cursos',(req, res)=>{
 });
 
 //cursos de Matematicas
-app.get('/api/cursos/matematicas',(req, res)=>{
+routerMatematicas.get('/',(req, res)=>{
    res.send(JSON.stringify(infoCursos.matematicas));
 });
 
@@ -137,7 +143,7 @@ routerProgramacion.get('/:lenguaje/:nivel',(req, res)=>{
 });
 
 //Matematicas
-app.get('/api/cursos/matematicas/:tema',(req, res)=>{
+routerMatematicas.get('/:tema',(req, res)=>{
 
     const tema = req.params.tema;
 
