@@ -26,6 +26,50 @@ app.get('/api/cursos/matematicas',(req, res)=>{
    res.send(JSON.stringify(infoCursos.matematicas));
 });
 
+//Buscar por parametros de ruta en progrmacion.
+app.get('/api/cursos/programacion/:lenguaje',(req, res)=>{
+
+    const lenguaje = req.params.lenguaje;
+
+   //Filtrar informacion
+   const resultados = infoCursos.programacion.filter(curso => curso.lenguaje === lenguaje);
+
+   if(resultados.length === 0){
+       return res.status(404).send(`No se encontraron cursos de ${lenguaje}`);
+   }
+   res.send(JSON.stringify(resultados));
+});
+
+//Buscar por curso y nivel
+app.get('/api/cursos/programacion/:lenguaje/:nivel',(req, res)=>{
+    const lenguaje = req.params.lenguaje;
+    const nivel = req.params.nivel;
+
+    const resultados = infoCursos.programacion.filter(curso => curso.lenguaje === lenguaje && curso.nivel === nivel);
+
+    if(resultados.length === 0){
+        return res.status(404).send(`No se encontraron cursos de ${lenguaje} y de nivel ${nivel}`);
+    }
+    res.send(JSON.stringify(resultados));
+
+
+});
+
+//Matematicas
+app.get('/api/cursos/matematicas/:tema',(req, res)=>{
+
+    const tema = req.params.tema;
+
+    //Filtrar informacion
+    const resultados = infoCursos.matematicas.filter(curso => curso.tema === tema);
+
+    if(resultados.length === 0){
+        return res.status(404).send(`No se encontraron cursos de ${tema}`);
+    }
+    res.send(JSON.stringify(resultados));
+});
+
+
 //con process.env.PORT para detectar cualquier puerto o el 3000
 const puerto = process.env.PORT || 3000;
 
