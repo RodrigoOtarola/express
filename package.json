@@ -1,0 +1,14 @@
+{
+  "name": "seridor-express",
+  "version": "1.0.0",
+  "description": "expres",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rodrigo Otarola",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
